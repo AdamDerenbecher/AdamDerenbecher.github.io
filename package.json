@@ -1,5 +1,19 @@
 {
-  "name": "Adam Derenbecher's Portfolio",
-  "description": "A portfolio of all my work",
-  "version": "0.0.1"
+  "name": "my_portfolio",
+  "version": "1.0.0",
+  "description": "My first attempt at putting together a portfolio of what I am doing on Free Code Camp",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdamDerenbecher/AdamDerenbecher.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdamDerenbecher/AdamDerenbecher.github.io/issues"
+  },
+  "homepage": "https://github.com/AdamDerenbecher/AdamDerenbecher.github.io#readme"
 }
