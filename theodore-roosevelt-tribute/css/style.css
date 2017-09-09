@@ -1,0 +1,36 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  background-color: black;
+  color: white;
+}
+
+.list-group-item{
+  background-color:transparent;
+  border: none;
+}
+
+.numberCircle {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 4px;
+    background: #fff;
+    border: 2px solid black;
+    color: black;
+    text-align: center;
+    font: 32px Arial, sans-serif;
+    display: inline-block;
+}
+
+#myCarousel{
+  border-style: solid;
+  border-width: 5px;
+}
+
+div.container {
+  padding: 10px 20px;
+}
