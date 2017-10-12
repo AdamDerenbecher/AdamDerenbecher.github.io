@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Weather Application</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <!-- Jumbotron -->
+<div class="jumbotron">
+ <h1 id="city" class="display-3 text-center"></h1>
+ <h3 class="lead  text-center">Local Weather</h3>
+ <hr class="my-4">
+ <div id="degreeButtons">
+  <a id="farBtn" class="btn btn-lg" href="#" role="button">
+   <img class="img-responsive" src="https://image.ibb.co/mt3bG5/Fahrenheit_icon.png">
+  </a>
+  <a id="celBtn" class="btn btn-lg" href="#" role="button">
+   <img class="img-responsive" src="https://image.ibb.co/g7ngik/Celsius_icon.png">
+  </a>
+ </div>
+</div>
+<!-- Current Weather -->
+<div class="container">
+ <div class="row">
+  <div id="currentTemp" class="col-sm-6">
+  </div>
+  <div id="weatherIcon" class="col-sm-6">
+  </div>
+ </div>
+</div>
+<!-- Hi and Low Temps -->
+<div class="container">
+ <div class="row">
+  <div id="maxTemp" class="col-sm-6">
+  </div>
+  <div id="minTemp" class="col-sm-6">
+  </div>
+ </div>
+</div>
+<!-- Wind, Visibility, Sunrise, and Sunset -->
+<div class="container">
+ <div class="row">
+  <div>
+   <div id="wind" class="col-sm-4" style="height: 100px;">
+   </div>
+   <div id="visibility" class="col-sm-4" style="height: 100px;">
+   </div>
+   <div id="sunrise-sunset" class="col-sm-4" style="height: 100px;">
+
+   </div>
+  </div>
+ </div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+    <script  src="js/index.js"></script>
+
+</body>
+</html>
