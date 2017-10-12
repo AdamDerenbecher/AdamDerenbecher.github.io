@@ -1,0 +1,109 @@
+html,
+body {
+	background-image: url("https://image.ibb.co/dNjoUQ/nature_forest_trees_fog.jpg");
+	background-size: cover;
+	background-attachment: relative;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.jumbotron {
+	background-color: transparent;
+}
+
+.btn {
+	border-color: black;
+	border-width: 5px;
+	border-radius: 50%;
+	color: black;
+	width: 100px;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#degreeButtons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#currentTemp {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 100px;
+	font-color: black;
+	height: 200px;
+}
+
+#weatherIcon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 200px;
+}
+
+#actualIcon {
+	height: 100%;
+}
+
+#maxTemp,
+#minTemp {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 100px;
+	font-color: black;
+	height: 200px;
+}
+
+#wind,
+#visibility {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 50px;
+	font-color: white;
+	height: 200px;
+}
+
+#mySun,
+#myWind {
+	max-height: 100%;
+}
+
+#sunrise-sunset {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 20px;
+	font-color: white;
+	height: 200px;
+}
+
+p {
+	font-size: 30px;
+	font-family: "Maven Pro", sans-serif;
+	font-weight: bold;
+	color: white;
+	text-shadow: 10px 10px 80px black;
+}
+
+h2 {
+	font-size: 100px;
+	font-family: "Maven Pro", sans-serif;
+	font-weight: bold;
+	color: white;
+	text-shadow: 10px 10px 80px black;
+}
+
+.white {
+	color: white;
+}
+
+.filter {
+	-webkit-filter: brightness(0) invert(1);
+	filter: brightness(0) invert(1);
+}
