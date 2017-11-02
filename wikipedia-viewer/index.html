@@ -16,20 +16,21 @@
 
 <body>
   <div id="fullPage" class="d-flex justify-content-center align-items-center">
-
  <form id="myForm" role="search">
   <div id="input" class="input-group add-on">
    <input class="form-control" placeholder="Search Wikipedia" name="srch-term" id="searchBox" type="text">
-    <button id="searchButton" class="btn btn-default" > 
+   <button id="searchButton" class="btn btn-default"> 
 			<i class="fa fa-search" aria-hidden="true"></i>
     </button>
-		<button id="randomButton" class="rounded">
+   <button id="randomButton" class="rounded">
 			<img id="randomImage" class="img-fluid" src="https://image.ibb.co/nyG43G/random_Button.png" alt="random_Button">
 		</button>
-		
   </div>
  </form>
-	
+
+ <div id="resultDiv" class="list-group" style="width: 90%; display: none;">
+ </div>
+
 </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 

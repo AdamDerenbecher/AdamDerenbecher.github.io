@@ -13,7 +13,7 @@ body {
 }
 #searchBox,
 #searchButton,
-#randomButton{
+#randomButton {
 	border: solid;
 	border-color: black;
 }
