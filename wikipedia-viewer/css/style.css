@@ -1,0 +1,18 @@
+html,
+body {
+	background-color: #42a7f4;
+	height: 100%;
+}
+#fullPage {
+	height: 100%;
+	border: solid;
+}
+#myForm {
+	position: absolute;
+	width: 30%;
+}
+#searchBox,
+#searchButton {
+	border: solid;
+	border-color: black;
+}
