@@ -12,7 +12,11 @@ body {
 	width: 30%;
 }
 #searchBox,
-#searchButton {
+#searchButton,
+#randomButton{
 	border: solid;
 	border-color: black;
+}
+#randomImage {
+	max-height: 29px;
 }
