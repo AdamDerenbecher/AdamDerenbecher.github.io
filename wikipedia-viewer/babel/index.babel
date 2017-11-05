@@ -1,14 +1,17 @@
 $(document).ready(function() {
-	$("#myForm").focus(function() {
+	$("input").focus(function() {
 		$("#myForm").animate(
 			{
 				width: "80%",
-				marginTop: 0
+				border: "solid"
 			},
 			"slow"
 		);
 	});
-	$("input").focus(function() {
+
+	var resultHtml;
+
+	$("#searchButton").click(function f() {
 		$("#myForm").animate(
 			{
 				width: "80%",
@@ -17,37 +20,56 @@ $(document).ready(function() {
 			},
 			"slow"
 		);
-	});
-	$("#myForm").submit(function() {
-		$("#resultDiv").html(`
-												 <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small>3 days ago</small>
-    </div>
-    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    <small>Donec id elit non mi porta.</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small class="text-muted">3 days ago</small>
-    </div>
-    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    <small class="text-muted">Donec id elit non mi porta.</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small class="text-muted">3 days ago</small>
-    </div>
-    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    <small class="text-muted">Donec id elit non mi porta.</small>
-  </a>
-</div>
-												 `);
-		$("#resultDiv").slideDown("slow");
+		$.ajax({
+			url: "https://en.wikipedia.org/w/api.php",
+			data: {
+				format: "json",
+				action: "opensearch",
+				search: $("#searchBox").val(),
+				namespace: 0,
+				limit: 10
+			},
+			dataType: "jsonp",
+			success: function(data) {
+				var resultCount = data[1].length;
+				var searchTerm = data[0];
+
+				resultHtml = `<div class="list-group">`;
+
+				var i;
+				for (i = 1; i < resultCount; i++) {
+					var resultTitle = data[1][i];
+					var resultDesc = data[2][i];
+					var resultLink = data[3][i];
+
+					var oneResult = `
+						  <a href="${resultLink}" target="_blank" class="list-group-item list-group-item-action flex-column align-items-start">
+								<div class="d-flex w-100 justify-content-between">
+									<h5 class="mb-1">${resultTitle}</h5>
+								</div>
+								<p class="mb-1">${resultDesc}</p>
+							</a>
+					`;
+
+					resultHtml += oneResult;
+				}
+
+				resultHtml += `</div>`;
+				$("#myForm").animate(
+					{
+						width: "80%",
+						marginTop: 0
+					},
+					"slow"
+				);
+
+				$("#resultDiv").html(`${resultHtml}`);
+				$(".pre-scrollable").css("max-height", "80%");
+				$("#resultDiv").slideDown("slow");
+			}
+		});
+
 		return false;
 	});
+	
 });
