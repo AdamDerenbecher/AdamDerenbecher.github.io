@@ -1,60 +1,33 @@
-"use strict";
-
-$(document).ready(function () {
-	$("input").focus(function () {
-		$("#myForm").animate({
-			width: "80%",
-			border: "solid"
-		}, "slow");
-	});
-
-	var resultHtml;
-
-	$("#searchButton").click(function f() {
-		$("#myForm").animate({
-			width: "80%",
-			border: "solid",
-			top: "10px"
-		}, "slow");
-		$.ajax({
-			url: "https://en.wikipedia.org/w/api.php",
-			data: {
-				format: "json",
-				action: "opensearch",
-				search: $("#searchBox").val(),
-				namespace: 0,
-				limit: 10
-			},
-			dataType: "jsonp",
-			success: function success(data) {
-				var resultCount = data[1].length;
-				var searchTerm = data[0];
-
-				resultHtml = "<div class=\"list-group\">";
-
-				var i;
-				for (i = 1; i < resultCount; i++) {
-					var resultTitle = data[1][i];
-					var resultDesc = data[2][i];
-					var resultLink = data[3][i];
-
-					var oneResult = "\n\t\t\t\t\t\t  <a href=\"" + resultLink + "\" target=\"_blank\" class=\"list-group-item list-group-item-action flex-column align-items-start\">\n\t\t\t\t\t\t\t\t<div class=\"d-flex w-100 justify-content-between\">\n\t\t\t\t\t\t\t\t\t<h5 class=\"mb-1\">" + resultTitle + "</h5>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<p class=\"mb-1\">" + resultDesc + "</p>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t";
-
-					resultHtml += oneResult;
-				}
-
-				resultHtml += "</div>";
-				$("#myForm").animate({
-					width: "80%",
-					marginTop: 0
-				}, "slow");
-
-				$("#resultDiv").html("" + resultHtml);
-				$(".pre-scrollable").css("max-height", "80%");
-				$("#resultDiv").slideDown("slow");
-			}
-		});
-
-		return false;
-	});
-});
+//make sure all of this script is ready when webpage loads
+$(document).ready(function() {
+	//when the search button is clicked
+	$("#searchButton").click(function() {
+		var searchTerm = $("#searchBox").val();
+		var resultsApiUrl = "https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=" + searchTerm + "&namespace=0&limit=10";
+		console.log("you searched for : " + "\n" + searchTerm);
+		$.get(resultsApiUrl,
+			    function(data, status) {
+						console.log("The results of your search are : " + "\n" + JSON.stringify(data));
+						var resultCount = data[1].length;
+						console.log("The number of your results are : " + "\n" + resultCount);
+						function getImage(myData) {
+							var placeHolder = myData.query.pages;
+							var resultImage = placeHolder[Object.keys(placeHolder)[0]].thumbnail.source;
+							return resultImage;
+						} //getImage function
+						for (var i = 0; i < resultCount; i++) {
+							console.log("getting result for this number : " + i);
+							var getUrl = "https://cors-anywhere.herokuapp.com/http://en.wikipedia.org/w/api.php?action=query&titles=" +
+							data[1][i] +
+							"&prop=pageimages&format=json&pithumbsize=100";
+							$.get(getUrl,
+									function(data) {
+										var imgUrl = getImage(data);
+										console.log(imgUrl);
+									}
+							)
+						} // for loop
+				} // results function
+		); //results get
+	}); //button
+}); //ready
